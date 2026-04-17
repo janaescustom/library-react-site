@@ -1,27 +1,19 @@
 import React from "react";
 import Logo from "../assets/library.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
-  const handleScroll = (event) => {
-        event.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    };
-
   return (
     <footer>
       <div className="container">
         <div className="row row__column">
-          <Link to="/">
-            <figure className="footer__logo" onClick={handleScroll}>
+          <Link to="/" >
+            <figure className="footer__logo">
               <img src={Logo} className="footer__logo--img" alt="Library Logo"/>
             </figure>
           </Link>
           <div className="footer__list">
-            <Link to="/" className="footer__link" onClick={handleScroll}>
+            <Link to="/" className="footer__link">
               Home
             </Link>
             <span className="footer__link no-cursor">About</span>
