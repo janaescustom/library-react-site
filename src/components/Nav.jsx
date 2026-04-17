@@ -13,15 +13,23 @@ function Nav({ numberOfItems }) {
         document.body.classList.remove("menu--open");
     }
 
+    const handleScroll = (event) => {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
     return (
         <nav>
             <div className="nav__container">
-                <Link to="/">
+                <Link to="/" onClick={handleScroll}>
                     <img src={LibraryLogo} alt="Library Logo" className='logo' />
                 </Link>
                 <ul className="nav__links">
                     <li className="nav__list">
-                        <Link to="/" className="nav__link">
+                        <Link to="/" className="nav__link" onClick={handleScroll}>
                         Home
                         </Link>
                     </li>
