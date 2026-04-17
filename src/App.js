@@ -38,7 +38,6 @@ class ErrorBoundary extends React.Component {
 // Usage in your App component
 function App() {
   const [cart, setCart] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
 
   function addToCart(book) {
     setCart([...cart, { ...book, quantity: 1 }]);
@@ -61,7 +60,7 @@ function App() {
     setCart(cart.filter((cartItem) => cartItem.id !== item.id));
   }
 
-  function calcItemTotal() {
+  function getTotalItemsInCart() {
     let counter = 0;
     cart.forEach(item => {
       counter += item.quantity
@@ -75,7 +74,7 @@ function App() {
 
   return (
     <Router>
-      <Nav numberOfItems={calcItemTotal()} />
+      <Nav numberOfItems={getTotalItemsInCart()} />
       <ErrorBoundary>
           <ScrollToTop />
         <Routes>
