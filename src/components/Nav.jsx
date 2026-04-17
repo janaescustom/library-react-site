@@ -3,7 +3,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LibraryLogo from '../assets/library.png';
 import { Link } from 'react-router-dom';
-// import ScrollToTop from './ScrollToTop';
 
 function Nav({ numberOfItems }) {
     function openMenu() {
@@ -13,14 +12,6 @@ function Nav({ numberOfItems }) {
     function closeMenu() {
         document.body.classList.remove("menu--open");
     }
-
-// const handleScroll = (event) => {
-//         event.preventDefault();
-//         window.scrollTo({
-//             top: 0,
-//             behavior: "smooth"
-//         });
-//     };
 
     return (
         <nav>
