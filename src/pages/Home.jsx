@@ -7,13 +7,13 @@ import Explore from '../components/Explore';
 
 const Home = () => {
     return (
-        <>
+        <div id="home">
         <Landing />
         <Highlights />
         <Featured />
         <Discounted />
         <Explore />
-        </>
+        </div>
 
     );
 }

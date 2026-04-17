@@ -4,13 +4,19 @@ import Price from "../components/ui/Price";
 import emptyBasket from "../assets/empty-basket.png";
 
 const Cart = ({ cart, changeQuantity, removeItem }) => {
+
+  const lowerPrice = (book) => {
+    return Math.min(book.hardcoverPrice || Infinity, book.paperbackPrice || Infinity);
+  }
+
   const total = () => {
     let counter = 0;
     cart.forEach((item) => {
-      counter += (item.hardcoverPrice || item.paperbackPrice) * item.quantity;
+      counter += lowerPrice(item) * item.quantity;
     })
     return counter.toFixed(2);
   };
+
 
   // function removeFromCart(book) {
   //   changeQuantity({ book, quantity: 0 });
@@ -67,7 +73,7 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
                       </div>
                       <div className="cart__total">
                         €
-                        {((book.hardcoverPrice || book.paperbackPrice) * book.quantity).toFixed(
+                        {( lowerPrice(book) * book.quantity).toFixed(
                           2,
                         )}
                       </div>
@@ -77,8 +83,8 @@ const Cart = ({ cart, changeQuantity, removeItem }) => {
               </div>
               {cart.length === 0 && (
                 <div className="cart__empty">
-                  <h2>You don't have any books in your cart!</h2>
-                  <img src={emptyBasket} alt="" />
+                  <h2>You don't have any books in your cart yet!</h2>
+                    <img src={emptyBasket} alt="" className="cart__empty--img" />
                   <Link to="/books">
                     <button className="btn">Browse Books</button>
                   </Link>

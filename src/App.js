@@ -1,4 +1,3 @@
-// import Book from './components/ui/Book';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
@@ -8,8 +7,10 @@ import Books from "./pages/Books";
 import { books } from "./data.js";
 import BookInfo from "./pages/BookInfo";
 import Cart from "./pages/Cart";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 import React, { useEffect, useState } from "react";
+
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -76,6 +77,7 @@ function App() {
     <Router>
       <Nav numberOfItems={calcItemTotal()} />
       <ErrorBoundary>
+          <ScrollToTop />
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/books" element={<Books books={books} />} />
